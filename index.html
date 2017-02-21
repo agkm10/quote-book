@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body ng-controller="mainCtrl">
+  <div class="title">Quote Book</div>
+    <div class="main" ng-repeat="quote in checkQuote | filter:quoteFilter">
+        <div class="quoteBox">
+            "{{quote.text}}"<br>
+            <br>
+             - <b>{{quote.author}}</b><br>
+        </div>
+        <div class="removeButton">
+            <button ng-click="removeQuote(quote)">Remove Quote</button>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="addQuote">
+            Add quote<br> Quote Text: <br>
+            <input ng-model="quoteText"></input><br> Quote Author:<br>
+            <input ng-model="quoteAuthor"></input><br>
+            <button ng-click="addQuote()">Add New Quote!</button>
+          </div>
+          <div class="filter">
+            Filter Results: <br>
+            <br>
+            <input class="form-control" placeholder="Search By Author" ng-model="quoteFilter.author"><br>
+            <br>
+            <input class="form-control" placeholder="Search by Quote" ng-model="quoteFilter.text">
+          </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="ctrl.js"></script>
+    <script src="service.js"></script>
+</body>
+
+</html>
